@@ -45,7 +45,7 @@ function AppNavBar({itemsQty}) {
                         <Badge badgeContent={itemsQty} color="secondary">
                         <AddShoppingCartIcon />
                         </Badge>
-                            {/* <Button color="inherit"><AddShoppingCartIcon /></Button> */}
+                            {/* <Button color="primary"><AddShoppingCartIcon /></Button> */}
                         </Link>
                     </Toolbar>
                 </AppBar>
