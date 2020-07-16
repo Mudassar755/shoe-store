@@ -10,49 +10,12 @@ const useStyles = makeStyles((theme) => ({
         flexWrap: 'wrap',
         flexGrow: 1,
     },
-    root1: {
-        backgroundColor: "#FFF"
-    },
-    root2: {
-        backgroundImage: "linear-gradient(to right, #ebedfa , #c2bdd4)"
-    },
-    gridContainer: {
-        marginTop: "10px",
-        marginBottom: "10px"
-    },
-    gridContainer1: {
-        marginTop: "10px",
-        marginBottom: "10px",
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'left',
-        color: theme.palette.text.secondary,
-        backgroundColor: "#F4F4F4",
-        boxShadow: "10px 10px 50px 10px #ddd"
-    },
-    paper1: {
-        padding: theme.spacing(2),
-        textAlign: 'left',
-        color: theme.palette.text.secondary,
-        backgroundColor: "#F4F4F4",
-        width: "100%",
-        height: "85%",
-    },
-    textSection: {
-        paddingTop: "20%",
-        paddingLeft: "20%"
-    },
+ 
     sparkBtn: {
         backgroundColor: "transparent",
          border: "1px solid #FFF",
          color: "#FFF"
     },
-    // lastSpark: {
-    //   backgroundColor: "red"
-
-    // }
-
 
 }));
 
