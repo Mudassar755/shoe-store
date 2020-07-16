@@ -38,4 +38,4 @@ jobs:
       run: npm install -g surge
     
     - name: deploying on surge
-      run: surge ./build http://mudasar-shoe-store.surge.sh/cart --token ${{secrets.SHOE_STORE}}
+      run: surge ./build http://mudasar-shoe-store.surge.sh --token ${{secrets.SHOE_STORE}}
