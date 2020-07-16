@@ -1,26 +1,18 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import {
     Paper,
     Grid,
     Container,
     Button,
     Typography,
-    Checkbox,
-    Divider
 } from '@material-ui/core';
-import shoe1 from '../../images/shoe1.png';
-import shoe2 from '../../images/shoe2.png';
-import shoe3 from '../../images/shoe3.png';
-import shoe4 from '../../images/shoe4.png';
-import shoe5 from '../../images/shoe5.png';
 import headerImg from '../../images/products-header.png';
 import { connect } from 'react-redux';
 import { addToCart, deleteProduct, clearCart, getProduct } from '../../Redux/Actions/productsActions'
 import { Link } from 'react-router-dom'
 
-import { GlobalContext } from '../../context/GlobalState';
+// import { GlobalContext } from '../../context/GlobalState';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -60,34 +52,33 @@ const useStyles = makeStyles((theme) => ({
 const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct }) => {
     const classes = useStyles();
     // const [checked, setChecked] = useState(false);
-    const [formData, setFormData] = useState({
-        checked: false,
-    });
-    const { checked } = formData
-    const handleChange = (event) => {
-        setFormData({ ...formData, checked: !checked });
-        // setChecked(event.target.checked);
-        console.log("checked", checked)
-    };
+    // const [formData, setFormData] = useState({
+    //     checked: false,
+    // });
+    // const { checked } = formData
+    // const handleChange = (event) => {
+    //     setFormData({ ...formData, checked: !checked });
+    //     // setChecked(event.target.checked);
+    //     console.log("checked", checked)
+    // };
 
-    // const {products, addToCart, cart} = useContext(GlobalContext);
-    console.log("products", products)
     return (
         <div className={classes.root}>
 
-            <Container className={classes.gridContainer}>
-                <Grid container spacing={3} style={{ backgroundColor: "#F2BDB7", margin: "2% 0" }}>
-                    <Grid item xs={10} sm={6} md={6}>
+            {/* <Container className={classes.gridContainer}> */}
+                <Grid container spacing={2} style={{ backgroundColor: "#F2BDB7", margin: "0 0" }}>
+                    <Grid item xs={12} sm={10} md={6}>
                         <div style={{ margin: "14% 30%" }}>
                             <Typography variant="body2" gutterBottom>Products Header</Typography>
                             <Typography variant="h5" gutterBottom>Products Header</Typography>
                             <Button style={{ border: "1px solid black" }}>Shop Now</Button>
                         </div>
                     </Grid>
-                    <Grid item xs={10} sm={6} md={6}>
-                        <img src={headerImg} alt="header" />
+                    <Grid item xs={12} sm={8} md={6}>
+                        <img src={headerImg} alt="header" style={{width:"101%"}} />
                     </Grid>
                 </Grid>
+                <Container style={{margin:"2% 0"}}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={12} md={12}>
                         <Typography variant="h4" gutterBottom>Products Store</Typography>
@@ -171,12 +162,12 @@ const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct })
 
                     </Grid> */}
                     {products.map(product => (
-                        <Grid item xs={6} md={2} sm={4} style={{ marginRight: "40px" }}>
+                        <Grid item xs={10} md={2} sm={4} style={{ marginRight: "40px", width:"100%" }} key={product.id}>
 
                             <div>
                                 <Link to={`products/${product.title.toLowerCase()}`}>
                                     <Paper className={classes.paper1} elevation={3} onClick={() => getProduct(product)}>
-                                        <img src={product.imgSrc} alt="shoes" />
+                                        <img src={product.imgSrc} alt="shoes" style={{width:"100%"}} />
                                     </Paper>
                                 </Link>
                                 <div style={{ marginTop: "10px" }}>
@@ -198,12 +189,12 @@ const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct })
                     ))}
 
                     {products.map(product => (
-                        <Grid item xs={6} md={2} sm={4} style={{ marginRight: "40px" }}>
+                        <Grid item xs={10} md={2} sm={4} style={{ marginRight: "40px" }} key={product.id}>
 
                             <div>
                                 <Link to={`products/${product.title.toLowerCase()}`}>
                                     <Paper className={classes.paper1} elevation={3} onClick={() => getProduct(product)}>
-                                        <img src={product.imgSrc} alt="shoes" />
+                                        <img src={product.imgSrc} alt="shoes" style={{width:"100%"}}/>
                                     </Paper>
                                 </Link>
                                 <div style={{ marginTop: "10px" }}>
@@ -235,7 +226,8 @@ const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct })
                     </Grid>
 
                 </Grid>
-            </Container>
+                </Container>
+            {/* </Container> */}
         </div>
     )
 }

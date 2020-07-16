@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import { Paper, Grid, Container, Button } from '@material-ui/core';
 import shoe1 from '../../images/shoe1.png';
 import shoe2 from '../../images/shoe2.png';
@@ -42,100 +41,100 @@ const Categories = () => {
             <Container className={classes.gridContainer}>
                 <Grid container spacing={3}>
 
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe1} />
+                                <img src={shoe1} alt="nike shoe"/>
                             </div>
                            
                             <Button>Category Name</Button>
                         </Paper>
 
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe2} />
+                                <img src={shoe2} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe3} />
+                                <img src={shoe3} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe4} />
+                                <img src={shoe4} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe5} />
+                                <img src={shoe5} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe1} />
+                                <img src={shoe1} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe2} />
+                                <img src={shoe2} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe3} />
+                                <img src={shoe3} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe4} />
+                                <img src={shoe4} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe5} />
+                                <img src={shoe5} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe1} />
+                                <img src={shoe1} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={12} sm={6} md={4}>
                         <Paper className={classes.paper} elevation={3}>
                             <div className={classes.paperDiv}>
-                                <img src={shoe2} />
+                                <img src={shoe2} alt="nike shoe"/>
                             </div>
                             <Button>Category Name</Button>
                         </Paper>

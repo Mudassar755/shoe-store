@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Grid, Container, Typography, Button } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 import spark from '../../images/spark.png';
 
 
@@ -43,9 +43,10 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: "20%",
         paddingLeft: "20%"
     },
-    heading: {
-        paddingTop: "5%",
-        paddingLeft: "1%"
+    sparkBtn: {
+        backgroundColor: "transparent",
+         border: "1px solid #FFF",
+         color: "#FFF"
     },
     // lastSpark: {
     //   backgroundColor: "red"
@@ -60,7 +61,7 @@ const BottomSection = () => {
     return (
         <div className="lastSpark">
                     <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6} md={6}>
+                        <Grid item xs={12} sm={10} md={6}>
                             <div style={{ margin: "25% 15%" }}>
                                 <Typography variant="h3" gutterBottom
                                     style={{ color: "#FFF", fontWeight: "600", }}
@@ -68,11 +69,11 @@ const BottomSection = () => {
                                     FINAL SPARK
                                  </Typography>
                                 <Button variant="contained"
-                                    style={{ backgroundColor: "transparent", border: "1px solid #FFF", color: "#FFF" }}
+                                    className={classes.sparkBtn}
                                 >Go To Store</Button>
                             </div>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={6}>
+                        <Grid item xs={12} sm={8} md={6}>
                             <img src={spark} alt="spark-img" />
                         </Grid>
                     </Grid>

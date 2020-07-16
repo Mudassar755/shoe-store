@@ -4,7 +4,7 @@ import { Container, AppBar, Toolbar, IconButton, Typography, Button, Badge } fro
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+// import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import {connect} from 'react-redux';
 const useStyles = makeStyles((theme) => ({
@@ -17,6 +17,15 @@ const useStyles = makeStyles((theme) => ({
     title: {
         flexGrow: 1,
     },
+    appHeader:{
+        backgroundColor: "#F4F4F4", 
+        color: "#000", 
+    },
+    appLink: {
+        color: "#000", 
+        textDecoration: "none",
+        margin: "0 10px"
+    }
 }));
 
 function AppNavBar({itemsQty}) {
@@ -24,24 +33,24 @@ function AppNavBar({itemsQty}) {
     return (
         <div>
             <Container>
-                <AppBar position="static" style={{ backgroundColor: "#F4F4F4", color: "#000" }}>
+                <AppBar position="static" className={classes.appHeader}>
                     <Toolbar>
                         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" className={classes.title}>
-                            <Link to="/" style={{ color: "#000", textDecoration: "none" }}>BootCamp eCommerce</Link>
+                            <Link to="/" className={classes.appLink}>Shoe Store</Link>
                         </Typography>
-                        <Link to="/" style={{ color: "#000", textDecoration: "none" }}>
+                        <Link to="/" className={classes.appLink}>
                             <Button color="inherit" >Home</Button>
                         </Link>
-                        <Link to="/categories" style={{ color: "#000", textDecoration: "none" }}>
+                        <Link to="/categories" className={classes.appLink}>
                             <Button color="inherit">Categories</Button>
                         </Link>
-                        <Link to="/products" style={{ color: "#000", textDecoration: "none" }}>
+                        <Link to="/products" className={classes.appLink}>
                             <Button color="inherit">Products</Button>
                         </Link>
-                        <Link to="/cart" style={{ color: "#000", textDecoration: "none", marginLeft:"10px" }}>
+                        <Link to="/cart" className={classes.appLink}>
                         <Badge badgeContent={itemsQty} color="secondary">
                         <AddShoppingCartIcon />
                         </Badge>

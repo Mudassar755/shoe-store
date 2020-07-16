@@ -1,8 +1,6 @@
 import {
     ADD_TO_CART, 
-    DELETE_PRODUCT, 
     CLEAR_CART,GET_PRODUCT, 
-    CART_QUANTITY,
     INCREMENT,
     DECREMENT,
     ERROR

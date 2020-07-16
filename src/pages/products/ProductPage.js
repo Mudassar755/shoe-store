@@ -1,18 +1,15 @@
 import React from 'react';
-import { Paper, Grid, Container, Button, Typography, Checkbox, Divider } from '@material-ui/core';
+import { Paper, Grid, Container, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import shoe1 from '../../images/shoe1.png';
 import headerImg from '../../images/products-header.png';
-import shoe2 from '../../images/shoe2.png';
-import shoe3 from '../../images/shoe3.png';
-import shoe4 from '../../images/shoe4.png';
-import shoe5 from '../../images/shoe5.png';
 
 import ReactImageMagnify from 'react-image-magnify';
-import ReactImageZoom from 'react-image-zoom';
+// import ReactImageZoom from 'react-image-zoom';
 
 import { connect } from 'react-redux';
-import { addToCart } from '../../Redux/Actions/productsActions'
+import {Link} from 'react-router-dom'
+import { addToCart, getProduct } from '../../Redux/Actions/productsActions'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,12 +31,17 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         height: "85%",
     },
+    productImg: {
+        height: "25%", 
+        backgroundColor: "#F4F4F4", 
+        marginTop: "5px"
+    }
 }));
 
 
-const ProductPage = ({ product, products, addToCart }) => {
+const ProductPage = ({ product, products, addToCart, getProduct }) => {
     const classes = useStyles();
-    const props = { zoomWidth: 500, img: headerImg };
+    // const props = { zoomWidth: 500, img: headerImg };
     return (
         <div className ={classes.root}>
             <Container>
@@ -48,7 +50,7 @@ const ProductPage = ({ product, products, addToCart }) => {
                 
                 <Grid container spacing={3}>
                     
-                    <Grid item xs={10} sm={6} md={6} style={{ backgroundColor: "#F4F4F4", height: "auto", margin: "5% 1%" }}>
+                    <Grid item xs={9} sm={8} md={6} style={{ backgroundColor: "#F4F4F4", height: "auto", margin: "5% 1%" }}>
                         {/* <ReactImageZoom {...props} /> */}
                         {/* <img src={headerImg} /> */}
                         <ReactImageMagnify {...{
@@ -68,14 +70,14 @@ const ProductPage = ({ product, products, addToCart }) => {
                             lensStyle: { backgroundColor: 'rgba(0,0,0,.6)' }
                         }} />
                     </Grid>
-                    <Grid item xs={1} sm={1} md={1} style={{ height: "330px", margin: "3.5% 0" }}>
-                        <img src={product ? product.imgSrc : shoe1} style={{ height: "25%", backgroundColor: "#F4F4F4", marginTop: "5px" }} />
-                        <img src={product ? product.imgSrc : shoe1} style={{ height: "25%", backgroundColor: "#F4F4F4", marginTop: "5px" }} />
-                        <img src={product ? product.imgSrc : shoe1} style={{ height: "25%", backgroundColor: "#F4F4F4", marginTop: "5px" }} />
-                        <img src={product ? product.imgSrc : shoe1} style={{ height: "25%", backgroundColor: "#F4F4F4", marginTop: "5px" }} />
+                    <Grid item xs={2} sm={2} md={1} style={{ height: "330px", margin: "3.5% 0" }}>
+                        <img src={product ? product.imgSrc : shoe1} className={classes.productImg} alt="reebol shoe"/>
+                        <img src={product ? product.imgSrc : shoe1} className={classes.productImg} alt="reebol shoe"/>
+                        <img src={product ? product.imgSrc : shoe1} className={classes.productImg} alt="reebol shoe"/>
+                        <img src={product ? product.imgSrc : shoe1} className={classes.productImg} alt="reebol shoe"/>
 
                     </Grid>
-                    <Grid item xs={12} sm={4} md={4} style={{ margin: "4% 1%" }}>
+                    <Grid item xs={12} sm={8} md={4} style={{ margin: "4% 1%" }}>
                         <Typography variant="h4" gutterBottom>Product Name</Typography>
                         <Typography variant="body1" gutterBottom><strong>${product ? product.price : '0'}</strong></Typography>
                         <Typography variant="body2" gutterBottom>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</Typography>
@@ -89,15 +91,19 @@ const ProductPage = ({ product, products, addToCart }) => {
                             }}
                             onClick={() => addToCart(product)}
                         >ADD TO CART</Button>
+                        <Link to = "/cart" style={{textDecoration:"none"}}>
                         <Button
                             variant="contained"
+                            onClick={() => addToCart(product)}
                             style={{
                                 backgroundColor: "transparent",
                                 color: "#131313",
                                 border: "1px solid #131313",
-                                margin: "20px 10px"
+                                margin: "20px 10px",
+                                
                             }}
                         >BUY NOW</Button>
+                        </Link>
                     </Grid>
                      </Grid>
                     ) : null}
@@ -107,11 +113,13 @@ const ProductPage = ({ product, products, addToCart }) => {
                     </Grid>
                     {products.map(product => (
 
-                        <Grid item xs={12} md={2} sm={4} style={{ marginRight: "40px" }}>
+                        <Grid item xs={12} md={2} sm={4} style={{ marginRight: "40px" }} key={product.id}>
                             <div>
-                                <Paper className={classes.paper1} elevation={3}>
+                            {/* <Link to={`products/${product.title.toLowerCase()}`}> */}
+                                <Paper className={classes.paper1} elevation={3} onClick={() => getProduct(product)}>
                                     <img src={product.imgSrc} alt="shoes" />
                                 </Paper>
+                                {/* </Link> */}
                                 <div style={{ marginTop: "10px" }}>
                                     <Typography variant="body2" gutterBottom>
                                         {product.tag}
@@ -141,4 +149,4 @@ const mapStateToProps = state => ({
     product: state.products.product,
     products: state.products.products
 })
-export default connect(mapStateToProps, { addToCart })(ProductPage);
+export default connect(mapStateToProps, { addToCart, getProduct })(ProductPage);

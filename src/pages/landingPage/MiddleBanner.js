@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Grid, Container, Typography, Button } from '@material-ui/core';
+import { Grid, Container, Typography, Button } from '@material-ui/core';
 import bannerShoe from '../../images/banner-shoe.png';
 
 
@@ -62,7 +62,7 @@ const MiddleBanner = () => {
         <div className={classes.root}>
                 <Container>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6} md={6}>
+                        <Grid item xs={12} sm={10} md={6}>
                             <div className={classes.textSection}>
                                 <Typography variant="body1" gutterBottom>
                                     Bootcamp eCommerce
@@ -79,7 +79,7 @@ const MiddleBanner = () => {
                                 </Button>
                             </div>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={6}>
+                        <Grid item xs={12} sm={8} md={6}>
                             <img src={bannerShoe} alt="banner" />
                         </Grid>
                     </Grid>

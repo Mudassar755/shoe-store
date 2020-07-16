@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Grid, Container, Typography, Button } from '@material-ui/core';
+import {  Grid, Typography, Button, Container } from '@material-ui/core';
 import mens from '../../images/mens-shoe.jpg';
 import mens1 from '../../images/mens-shoe1.jpg';
 
@@ -60,6 +60,7 @@ const TwoColumns = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
+            <Container>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={12} md={12}>
                     <Typography variant="h4" gutterBottom>Shoe Store</Typography>
@@ -83,6 +84,7 @@ const TwoColumns = () => {
                     </div>
                 </Grid>
             </Grid>
+            </Container>
         </div>
     )
 }

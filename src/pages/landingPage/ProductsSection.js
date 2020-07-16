@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Grid, Container, Typography, Button } from '@material-ui/core';
+import { Paper, Grid, Typography, Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import {getProduct} from '../../Redux/Actions/productsActions'
 
@@ -16,6 +16,20 @@ const useStyles = makeStyles((theme) => ({
         marginRight: "40px",
         padding: "50px"
     },
+    divider: {
+        width:"90%", 
+        height:"3px",
+        backgroundColor:"#CECECE", 
+        margin:"10px 5%"
+       },
+       paper: {
+        padding: theme.spacing(2),
+        textAlign: 'left',
+        color: theme.palette.text.secondary,
+        backgroundColor: "#F4F4F4",
+        width: "100%",
+        height: "85%",
+    },
 
 }));
 
@@ -23,6 +37,7 @@ const ProductsSection = ({ products, getProduct }) => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
+            <Container>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <div className={classes.heading}>
@@ -32,12 +47,12 @@ const ProductsSection = ({ products, getProduct }) => {
                     </div>
                 </Grid>
                 {products.map(product => (
-                    <Grid item xs={6} md={2} sm={4} className={classes.gridItem}>
+                    <Grid item xs={10} md={2} sm={4} className={classes.gridItem} key={product.id}>
 
                         <div>
                             <Link to={`products/${product.title.toLowerCase()}`}>
-                                <Paper className={classes.paper1} elevation={3} onClick ={() => getProduct(product)}>
-                                    <img src={product.imgSrc} alt="shoes" />
+                                <Paper className={classes.paper} elevation={3} onClick ={() => getProduct(product)}>
+                                    <img src={product.imgSrc} alt="shoes" style={{width:"100%"}}/>
                                 </Paper>
                             </Link>
                             <div style={{ marginTop: "10px" }}>
@@ -57,6 +72,8 @@ const ProductsSection = ({ products, getProduct }) => {
 
                 ))}
             </Grid>
+            <div className={classes.divider}></div>
+            </Container>
         </div>
     )
 }

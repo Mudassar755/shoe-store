@@ -1,18 +1,10 @@
 import React from 'react';
 import {
-    Paper,
     Grid,
     Container,
     Button,
     Typography,
-    Checkbox,
-    Divider
 } from '@material-ui/core';
-import shoe1 from '../../images/shoe1.png';
-import shoe2 from '../../images/shoe2.png';
-import shoe3 from '../../images/shoe3.png';
-import shoe4 from '../../images/shoe4.png';
-import shoe5 from '../../images/shoe5.png';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -68,7 +60,7 @@ const Cart = ({ cartItems, deleteProduct, increment, decrement, clearCart }) => 
                      <div style={{ width: "100%", height: "3px", backgroundColor: "#F4F4F4", margin: "5px 0" }}></div>
                  </Grid>
                  {cartItems.map(item => (
-                     <Grid container spacing={3}>
+                     <Grid container spacing={3} key={item.id}>
                          <Grid item xs={6} sm={6} md={6}>
                              <div style={{ backgroundColor: "#F4F4F4", width: "32%", height: "90%" }}>
                                  <img src={item.imgSrc} alt="product" style={{ width: "100%", height: "100%" }} />
