@@ -32,7 +32,7 @@ function AppNavBar({itemsQty}) {
     const classes = useStyles();
     return (
         <div>
-            <Container>
+            {/* <Container> */}
                 <AppBar position="static" className={classes.appHeader}>
                     <Toolbar>
                         <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
@@ -58,7 +58,7 @@ function AppNavBar({itemsQty}) {
                         </Link>
                     </Toolbar>
                 </AppBar>
-            </Container>
+            {/* </Container> */}
         </div>
     )
 }
