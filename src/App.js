@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter as Router, Switch, Route,} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route,} from 'react-router-dom';
 import AppNavBar from './components/appbar/AppNavBar';
 import Products from './pages/products/Products';
 import LandingPage from './pages/landingPage';
@@ -10,10 +10,7 @@ import Footer from './components/footer/Footer';
 import Cart from './pages/cart/Cart';
 import { Paper, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-
-import store from './Redux/Store';
-import {Provider} from 'react-redux';
+import {GlobalProvider} from './context/GlobalState'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,23 +33,25 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   return (
-    <Provider store={store}>
+    <GlobalProvider>
     <Router>
     <Container>
       <Paper elevation={3} className={classes.paper}>
       <AppNavBar />
-      <Switch>
-      <Route exact path="/" component= {LandingPage} />
-      <Route exact path="/products" component= {Products} />
-      <Route exact path="/categories" component= {Categories} />
-      <Route exact path="/products/:name" component= {ProductPage} />
-      <Route exact path="/cart" component= {Cart} />
-      </Switch>
+      <Routes>
+      <Route path="/" element= {<LandingPage />} />
+      <Route path="products" element= {<Products />} >
+
+      <Route path=":name" element= {<ProductPage />} />
+      </Route>
+      <Route path="categories" element= {<Categories />} />
+      <Route path="cart" element= {<Cart />} />
+      </Routes>
       <Footer />
        </Paper>
     </Container>
     </Router>
-    </Provider>
+    </GlobalProvider>
   );
 }
 

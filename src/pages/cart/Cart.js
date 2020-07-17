@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
     Grid,
     Container,
@@ -11,8 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-import { connect } from 'react-redux';
-import { deleteProduct, increment, decrement, clearCart } from '../../Redux/Actions/productsActions'
+import {GlobalContext} from '../../context/GlobalState'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,8 +23,9 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Cart = ({ cartItems, deleteProduct, increment, decrement, clearCart }) => {
+const Cart = () => {
     const classes = useStyles();
+    const { cartItems, deleteProduct, clearCart, increment, decrement} = useContext(GlobalContext)
     const reducerMethod = (accumulator, item) => {
         return accumulator + item;
     };
@@ -33,10 +33,8 @@ const Cart = ({ cartItems, deleteProduct, increment, decrement, clearCart }) => 
     let cartTotal = []
 
     cartItems.map(item => cartTotal.push(item.qty * item.price))
-    console.log("cartttttt", cartTotal)
 
     const total = cartTotal.reduce(reducerMethod, 0)
-    console.log("total", cartItems)
     return (
         <div>
             {cartItems.length ? (
@@ -132,7 +130,4 @@ const Cart = ({ cartItems, deleteProduct, increment, decrement, clearCart }) => 
     )
 }
 
-const mapStateToProps = state => ({
-    cartItems: state.products.cartItems
-})
-export default connect(mapStateToProps, { deleteProduct, increment, decrement, clearCart })(Cart);
+export default (Cart);

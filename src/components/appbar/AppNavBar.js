@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, IconButton, Typography, Button, Badge } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 // import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import {GlobalContext} from '../../context/GlobalState'
 
-import {connect} from 'react-redux';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -28,8 +28,9 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function AppNavBar({itemsQty}) {
+function AppNavBar() {
     const classes = useStyles();
+    const {itemsQty} = useContext(GlobalContext)
     return (
         <div>
                 <AppBar position="static" className={classes.appHeader}>
@@ -61,7 +62,4 @@ function AppNavBar({itemsQty}) {
     )
 }
 
-const mapStateToProps = state => ({
-    itemsQty: state.products.itemsQty
-})
-export default connect(mapStateToProps, null)(AppNavBar);
+export default (AppNavBar);

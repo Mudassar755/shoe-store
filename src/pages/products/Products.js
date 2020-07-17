@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     Paper,
@@ -8,11 +8,9 @@ import {
     Typography,
 } from '@material-ui/core';
 import headerImg from '../../images/products-header.png';
-import { connect } from 'react-redux';
-import { addToCart, deleteProduct, clearCart, getProduct } from '../../Redux/Actions/productsActions'
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
-// import { GlobalContext } from '../../context/GlobalState';
+import { GlobalContext } from '../../context/GlobalState';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct }) => {
+const Products = ({ products }) => {
     const classes = useStyles();
     // const [checked, setChecked] = useState(false);
     // const [formData, setFormData] = useState({
@@ -61,10 +59,9 @@ const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct })
     //     // setChecked(event.target.checked);
     //     console.log("checked", checked)
     // };
-
+    const {allProducts, addToCart, getProduct} = useContext(GlobalContext);
     return (
         <div className={classes.root}>
-
             {/* <Container className={classes.gridContainer}> */}
                 <Grid container spacing={2} style={{ backgroundColor: "#F2BDB7", margin: "0 0" }}>
                     <Grid item xs={12} sm={10} md={6}>
@@ -78,11 +75,19 @@ const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct })
                         <img src={headerImg} alt="header" style={{width:"101%"}} />
                     </Grid>
                 </Grid>
+
+                {/*  show selected item*/}
+
+                <Outlet />
+                
+                {/*  show selected item*/}
+
                 <Container style={{margin:"2% 0"}}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={12} md={12}>
                         <Typography variant="h4" gutterBottom>Products Store</Typography>
                     </Grid>
+                   
                     {/* <Grid item xs={2}>
                         <div className={classes.paper}>
                             <Typography variant="h6" gutterBottom>
@@ -161,11 +166,11 @@ const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct })
                         </div>
 
                     </Grid> */}
-                    {products.map(product => (
+                    {allProducts.map(product => (
                         <Grid item xs={10} md={2} sm={4} style={{ marginRight: "40px", width:"100%" }} key={product.id}>
 
                             <div>
-                                <Link to={`products/${product.title.toLowerCase()}`}>
+                                <Link to={`${product.title.toLowerCase()}`}>
                                     <Paper className={classes.paper1} elevation={3} onClick={() => getProduct(product)}>
                                         <img src={product.imgSrc} alt="shoes" style={{width:"100%"}} />
                                     </Paper>
@@ -188,11 +193,11 @@ const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct })
                         </Grid>
                     ))}
 
-                    {products.map(product => (
+                    {allProducts.map(product => (
                         <Grid item xs={10} md={2} sm={4} style={{ marginRight: "40px" }} key={product.id}>
 
                             <div>
-                                <Link to={`products/${product.title.toLowerCase()}`}>
+                                <Link to={`${product.title.toLowerCase()}`}>
                                     <Paper className={classes.paper1} elevation={3} onClick={() => getProduct(product)}>
                                         <img src={product.imgSrc} alt="shoes" style={{width:"100%"}}/>
                                     </Paper>
@@ -215,7 +220,7 @@ const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct })
                         </Grid>
                     ))}
 
-                    <Grid sx={12} sm={12} md={12} style={{ textAlign: "center" }}>
+                    <Grid xs={12} sm={12} md={12} style={{ textAlign: "center" }}>
                         <Button variant="contained"
                             style={{
                                 backgroundColor: "transparent",
@@ -232,7 +237,4 @@ const Products = ({ products, addToCart, deleteProduct, clearCart, getProduct })
     )
 }
 
-const mapStateToProps = state => ({
-    products: state.products.products
-})
-export default connect(mapStateToProps, { addToCart, deleteProduct, clearCart, getProduct })(Products);
+export default Products

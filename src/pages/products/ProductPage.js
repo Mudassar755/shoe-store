@@ -1,5 +1,5 @@
-import React from 'react';
-import { Paper, Grid, Container, Button, Typography } from '@material-ui/core';
+import React, {useContext} from 'react';
+import { Grid, Container, Button, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import shoe1 from '../../images/shoe1.png';
 import headerImg from '../../images/products-header.png';
@@ -7,9 +7,9 @@ import headerImg from '../../images/products-header.png';
 import ReactImageMagnify from 'react-image-magnify';
 // import ReactImageZoom from 'react-image-zoom';
 
-import { connect } from 'react-redux';
 import {Link} from 'react-router-dom'
-import { addToCart, getProduct } from '../../Redux/Actions/productsActions'
+
+import {GlobalContext} from '../../context/GlobalState'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,9 +39,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const ProductPage = ({ product, products, addToCart, getProduct }) => {
+const ProductPage = () => {
     const classes = useStyles();
     // const props = { zoomWidth: 500, img: headerImg };
+    const {product, addToCart} = useContext(GlobalContext)
     return (
         <div className ={classes.root}>
             <Container>
@@ -107,19 +108,19 @@ const ProductPage = ({ product, products, addToCart, getProduct }) => {
                     </Grid>
                      </Grid>
                     ) : null}
-                     <Grid container spacing ={3}>
+                     {/* <Grid container spacing ={3}>
                     <Grid item xs={12} sm={12} md={12}>
                         <Typography variant="h4" gutterBottom> Related Products</Typography>
                     </Grid>
-                    {products.map(product => (
+                    {allProducts.map(product => (
 
                         <Grid item xs={12} md={2} sm={4} style={{ marginRight: "40px" }} key={product.id}>
                             <div>
-                            {/* <Link to={`products/${product.title.toLowerCase()}`}> */}
+                            <Link to="/">
                                 <Paper className={classes.paper1} elevation={3} onClick={() => getProduct(product)}>
                                     <img src={product.imgSrc} alt="shoes" />
                                 </Paper>
-                                {/* </Link> */}
+                                </Link>
                                 <div style={{ marginTop: "10px" }}>
                                     <Typography variant="body2" gutterBottom>
                                         {product.tag}
@@ -139,14 +140,10 @@ const ProductPage = ({ product, products, addToCart, getProduct }) => {
                     ))}
 
 
-                </Grid>
+                </Grid> */}
             </Container>
         </div>
     )
 }
 
-const mapStateToProps = state => ({
-    product: state.products.product,
-    products: state.products.products
-})
-export default connect(mapStateToProps, { addToCart, getProduct })(ProductPage);
+export default (ProductPage);

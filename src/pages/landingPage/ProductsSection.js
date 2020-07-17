@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, Grid, Typography, Container } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import {getProduct} from '../../Redux/Actions/productsActions'
+
+import {GlobalContext} from '../../context/GlobalState'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,8 +33,9 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const ProductsSection = ({ products, getProduct }) => {
+const ProductsSection = () => {
     const classes = useStyles();
+    const {allProducts, getProduct} = useContext(GlobalContext)
     return (
         <div className={classes.root}>
             <Container>
@@ -46,7 +47,7 @@ const ProductsSection = ({ products, getProduct }) => {
                         </Typography>
                     </div>
                 </Grid>
-                {products.map(product => (
+                {allProducts.map(product => (
                     <Grid item xs={10} md={2} sm={4} className={classes.gridItem} key={product.id}>
 
                         <div>
@@ -77,7 +78,4 @@ const ProductsSection = ({ products, getProduct }) => {
         </div>
     )
 }
-const mapStateToProps = state => ({
-    products: state.products.products
-})
-export default connect(mapStateToProps, {getProduct})(ProductsSection)
+export default (ProductsSection)
